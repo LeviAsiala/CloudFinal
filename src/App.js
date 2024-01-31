@@ -1,10 +1,10 @@
-import logo from './logo.svg';
+import profile from './profile.jpg';
 import './App.css';
 
 function App() {
   return (
-    <>
-  DOCTYPE! html&gt;
+  <>
+  DOCTYPE! html
   <meta charSet="UTF-8" />
   <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
