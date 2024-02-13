@@ -1,0 +1,27 @@
+type Grades @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type Majors @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Name: String
+}
+
+type Teacher @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Classes: [Classes] @hasMany(indexName: "byTeacher", fields: ["id"])
+  Name: String
+}
+
+type Student @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Classes: [Classes] @manyToMany(relationName: "StudentClasses")
+  Name: String
+}
+
+type Classes @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Class: String
+  students: [Student] @manyToMany(relationName: "StudentClasses")
+  teacherID: ID! @index(name: "byTeacher")
+} 
