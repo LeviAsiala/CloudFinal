@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
 import { API } from "aws-amplify";
+import { signOut } from 'aws-amplify/auth';
 import {
   Button,
   Flex,
@@ -15,6 +16,14 @@ import {
 } from "@aws-amplify/ui-react";
 
 Amplify.configure(config);
+
+async function handleSignOut() {
+  try {
+    await signOut();
+  } catch (error) {
+    console.log('error signing out: ', error);
+  }
+}
 
 function App({signOut,user}) {
   return (
@@ -95,11 +104,7 @@ function App({signOut,user}) {
         <span className="tooltip">Settings</span>
       </li>
       <li>
-        <a href="#">
-          <i className="bx bx-log-out" />
-          <span className="nav-item">Logout</span>
-        </a>
-        <span className="tooltip">Logout</span>
+        <button><img src="src\profile.jpg" alt="my image" onClick={handleSignOut} /></button>
       </li>
     </ul>
   </div>
