@@ -10,6 +10,11 @@
       "StackName": "amplify-gradetrackingapplica-staging-163907",
       "StackId": "arn:aws:cloudformation:us-east-2:590183756347:stack/amplify-gradetrackingapplica-staging-163907/ef4f7180-b556-11ee-aa8a-06b94a1bbb43",
       "AmplifyAppId": "d20wpvn312p2e5"
+    },
+    "categories": {
+      "auth": {
+        "gradetrackingapplicab7273020": {}
+      }
     }
   }
 }
