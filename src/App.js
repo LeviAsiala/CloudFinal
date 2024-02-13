@@ -13,15 +13,8 @@ import {
   View,
   withAuthenticator,
 } from "@aws-amplify/ui-react";
-import { generateClient } from "aws-amplify/api";
-import { createGrades } from './graphql/mutations';
-Amplify.configure(config);
 
-const client = generateClient()
-const newGrades = await client.graphql({
-  query: createGrades,
-  variables: {input: {}}
-})
+Amplify.configure(config);
 
 function App({signOut,user}) {
   return (
