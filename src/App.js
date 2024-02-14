@@ -124,6 +124,7 @@ function App({signOut,user}) {
 }
 
 async function changeContent(pageName){
+  return '<h1>Testing, Testing, 1, 2, 3</h1>';
   var content = fetchContentForPage(pageName);
   document.getElementById('contentContainer').innerHTML = content;
 }
