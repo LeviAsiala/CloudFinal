@@ -26,12 +26,17 @@ async function handleSignOut() {
 }
 
 async function changeContent(pageName){
-  var content = await fetchContentForPage(pageName);
-  document.getElementById('contentContainer').innerHTML = content;
+  try {
+    var content = await fetchContentForPage(pageName);
+    document.getElementById('contentContainer').innerHTML = content;
+  } catch (error) {
+    console.error('Error changing content: ', error);
+  }
 }
 
 async function fetchContentForPage(pageName){
-  switch(pageName){
+  try {
+    switch(pageName){
       case 'Home':
           return '<h1>Home</h1>';
       case 'Grades':
@@ -50,6 +55,10 @@ async function fetchContentForPage(pageName){
           return '<h1>Logout</h1>';
       default:
           return '<h1>Home</h1>';
+    }
+  } catch (error) {
+    console.error('Error fetching content for page: ', error);
+    return '<h1>Error loading content</h1>';
   }
 }
 
