@@ -26,7 +26,7 @@ async function handleSignOut() {
 }
 
 async function changeContent(pageName){
-  var content = fetchContentForPage(pageName);
+  var content = await fetchContentForPage(pageName);
   document.getElementById('contentContainer').innerHTML = content;
 }
 
