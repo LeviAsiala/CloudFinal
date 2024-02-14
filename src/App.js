@@ -25,6 +25,34 @@ async function handleSignOut() {
   }
 }
 
+async function changeContent(pageName){
+  var content = fetchContentForPage(pageName);
+  document.getElementById('contentContainer').innerHTML = content;
+}
+
+async function fetchContentForPage(pageName){
+  switch(pageName){
+      case 'Home':
+          return '<h1>Home</h1>';
+      case 'Grades':
+          return '<h1>Grades</h1>';
+      case 'Tutoring':
+          return '<h1>Tutoring</h1>';
+      case 'FutureRec':
+          return '<h1>FutureRec</h1>';
+      case 'Majors':
+          return '<h1>Majors</h1>';
+      case 'Careers':
+          return '<h1>Careers</h1>';
+      case 'Settings':
+          return '<h1>Settings</h1>';
+      case 'Logout':
+          return '<h1>Logout</h1>';
+      default:
+          return '<h1>Home</h1>';
+  }
+}
+
 function App({signOut,user}) {
   useEffect(() => {
     // JavaScript code to toggle sidebar and set initial content
@@ -121,35 +149,6 @@ function App({signOut,user}) {
 </>
 
   );
-}
-
-async function changeContent(pageName){
-  return 'Testing, Testing, 1, 2, 3';
-  var content = fetchContentForPage(pageName);
-  document.getElementById('contentContainer').innerHTML = content;
-}
-
-async function fetchContentForPage(pageName){
-  switch(pageName){
-      case 'Home':
-          return '<h1>Home</h1>';
-      case 'Grades':
-          return '<h1>Grades</h1>';
-      case 'Tutoring':
-          return '<h1>Tutoring</h1>';
-      case 'FutureRec':
-          return '<h1>FutureRec</h1>';
-      case 'Majors':
-          return '<h1>Majors</h1>';
-      case 'Careers':
-          return '<h1>Careers</h1>';
-      case 'Settings':
-          return '<h1>Settings</h1>';
-      case 'Logout':
-          return '<h1>Logout</h1>';
-      default:
-          return '<h1>Home</h1>';
-  }
 }
 
 /**function toggleDropdown() {
