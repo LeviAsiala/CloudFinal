@@ -38,11 +38,10 @@ function App({signOut,user}) {
     document.addEventListener('DOMContentLoaded', function () {
         changeContent('Home');
     });
-}, []);
+  }, []);
 
   return (
   <>
-  DOCTYPE! html
   <meta charSet="UTF-8" />
   <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -117,7 +116,6 @@ function App({signOut,user}) {
   </div>
   <div className="main-content">
     <div className="container" id="contentContainer">
-      //nothing needed here
     </div>
   </div>
 </>
