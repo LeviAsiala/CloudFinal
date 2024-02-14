@@ -26,6 +26,20 @@ async function handleSignOut() {
 }
 
 function App({signOut,user}) {
+  useEffect(() => {
+    // JavaScript code to toggle sidebar and set initial content
+    let btn = document.querySelector('#btn');
+    let sidebar = document.querySelector('.sidebar');
+
+    btn.onclick = function () {
+        sidebar.classList.toggle('active');
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+        changeContent('Home');
+    });
+}, []);
+
   return (
   <>
   DOCTYPE! html
@@ -55,49 +69,42 @@ function App({signOut,user}) {
     </div>
     <ul>
       <li>
-        <a href="#">
+        <a href="#" onclick="changeContent('Home')">
           <i className="bx bxs-home" />
           <span className="nav-item">Home</span>
         </a>
         <span className="tooltip">Home</span>
       </li>
       <li>
-        <a href="#">
+        <a href="#" onclick="changeContent('Grades')">
           <i className="bx bx-bar-chart" />
           <span className="nav-item">Grades</span>
         </a>
         <span className="tooltip">Grades</span>
       </li>
       <li>
-        <a href="#">
+        <a href="#" onclick="changeContent('Tutoring')">
           <i className="bx bxs-pencil" />
           <span className="nav-item">Tutoring</span>
         </a>
         <span className="tooltip">Tutoring</span>
       </li>
       <li>
-        <a2 href="#">
-          <i className="bx bx-line-chart" />
-          <span className="nav-item">FutureRec</span>
-        </a2>
-        <span className="tooltip2">FutureRec</span>
-      </li>
-      <li>
-        <a href="#">
+        <a href="#" onclick="changeContent('Majors')">
           <i className="bx bxs-graduation" />
           <span className="nav-item">Majors</span>
         </a>
         <span className="tooltip">Majors</span>
       </li>
       <li>
-        <a href="#">
+        <a href="#" onclick="changeContent('Careers')">
           <i className="bx bxs-briefcase-alt-2" />
           <span className="nav-item">Careers</span>
         </a>
         <span className="tooltip">Careers</span>
       </li>
       <li>
-        <a href="#">
+        <a href="#" onclick="changeContent('Settings')">
           <i className="bx bxs-cog" />
           <span className="nav-item">Settings</span>
         </a>
@@ -109,13 +116,46 @@ function App({signOut,user}) {
     </ul>
   </div>
   <div className="main-content">
-    <div className="container">
-      <h1>FutureRec</h1>
+    <div className="container" id="contentContainer">
+      //nothing needed here
     </div>
   </div>
 </>
 
   );
+}
+
+function changeContent(pageName){
+  var content = fetchContentForPage(pageName);
+  document.getElementById('contentContainer').innerHTML = content;
+}
+
+function fetchContentForPage(pageName){
+  switch(pageName){
+      case 'Home':
+          return '<h1>Home</h1>';
+      case 'Grades':
+          return '<h1>Grades</h1>';
+      case 'Tutoring':
+          return '<h1>Tutoring</h1>';
+      case 'FutureRec':
+          return '<h1>FutureRec</h1>';
+      case 'Majors':
+          return '<h1>Majors</h1>';
+      case 'Careers':
+          return '<h1>Careers</h1>';
+      case 'Settings':
+          return '<h1>Settings</h1>';
+      case 'Logout':
+          return '<h1>Logout</h1>';
+      default:
+          return '<h1>Home</h1>';
+  }
+}
+
+function toggleDropdown() {
+  var dropdownContent = document.getElementById('dropdownContent');
+  dropdownContent.classList.toggle('show');
 }
 
 export default withAuthenticator(App);
