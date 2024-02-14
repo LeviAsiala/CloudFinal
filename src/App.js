@@ -110,7 +110,7 @@ function App({signOut,user}) {
         <span className="tooltip">Settings</span>
       </li>
       <li>
-        <button><img src="src\profile.jpg" alt="my image" onClick={handleSignOut} /></button>
+        <button><img src="profile.jpg" alt="my image" onClick={handleSignOut} /></button>
       </li>
     </ul>
   </div>
@@ -123,12 +123,12 @@ function App({signOut,user}) {
   );
 }
 
-function changeContent(pageName){
+async function changeContent(pageName){
   var content = fetchContentForPage(pageName);
   document.getElementById('contentContainer').innerHTML = content;
 }
 
-function fetchContentForPage(pageName){
+async function fetchContentForPage(pageName){
   switch(pageName){
       case 'Home':
           return '<h1>Home</h1>';
@@ -151,9 +151,9 @@ function fetchContentForPage(pageName){
   }
 }
 
-function toggleDropdown() {
+/**function toggleDropdown() {
   var dropdownContent = document.getElementById('dropdownContent');
   dropdownContent.classList.toggle('show');
-}
+}**/
 
 export default withAuthenticator(App);
