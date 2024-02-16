@@ -8,6 +8,7 @@ import "@aws-amplify/ui-react/styles.css";
 import { signOut } from 'aws-amplify/auth';
 import profileImg from "./profile.jpg";
 import logoutImg from "./logout.jpg";
+import { Auth } from 'aws-amplify'; // Import Auth from aws-amplify
 import {
   Button,
   Flex,
@@ -39,6 +40,15 @@ async function handleSignOut() {
     await signOut();
   } catch (error) {
     console.log('error signing out: ', error);
+  }
+}
+
+async function fetchUserData() {
+  try {
+    const userInfo = await Auth.currentAuthenticatedUser(); // Get authenticated user info
+    setUserData(userInfo); // Update state with user data
+  } catch (error) {
+    console.error('Error fetching user data:', error);
   }
 }
 
@@ -80,6 +90,12 @@ async function fetchContentForPage(pageName){
 }
 
 function App({signOut,user}) {
+  const [userData, setUserData] = useState(null); // State to store user data
+
+  useEffect(() => {
+    fetchUserData(); // Fetch user data when component mounts
+  }, []);
+
   useEffect(() => {
     // JavaScript code to toggle sidebar and set initial content
     let btn = document.querySelector('#btn');
@@ -116,7 +132,7 @@ function App({signOut,user}) {
     <div className="user">
       <img src={profileImg} alt="me" className="user-img" />
       <div>
-        <p className="bold">Elizabeth M.</p>
+        <p className="bold">{userData.attributes.name}</p>
         <p>Admin</p>
       </div>
     </div>
@@ -176,10 +192,5 @@ function App({signOut,user}) {
 
   );
 }
-
-/**function toggleDropdown() {
-  var dropdownContent = document.getElementById('dropdownContent');
-  dropdownContent.classList.toggle('show');
-}**/
 
 export default withAuthenticator(App);
