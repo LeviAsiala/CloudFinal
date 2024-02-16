@@ -133,7 +133,7 @@ function App({signOut,user}) {
       <img src={profileImg} alt="me" className="user-img" />
       <div>
         <p className="bold">{user.name}</p>
-        <p>Admin</p>
+        <p>Testing</p>
       </div>
     </div>
     <ul>
