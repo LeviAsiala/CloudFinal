@@ -6,6 +6,7 @@ import "@aws-amplify/ui-react/styles.css";
 import { API } from "aws-amplify";
 import { signOut } from 'aws-amplify/auth';
 import profileImg from "./profile.jpg";
+import logoutImg from "./logout.jpg";
 import {
   Button,
   Flex,
@@ -148,7 +149,7 @@ function App({signOut,user}) {
         <span className="tooltip">Settings</span>
       </li>
       <li>
-        <button><img src={profileImg} alt="my image" onClick={handleSignOut} /></button>
+        <button><img src={logoutImg} alt="my image" onClick={handleSignOut} /></button>
       </li>
     </ul>
   </div>
