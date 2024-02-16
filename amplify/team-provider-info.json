@@ -15,6 +15,9 @@
       "auth": {
         "gradetrackingapplicab7273020": {},
         "GradeTrackingApplicationGTA": {}
+      },
+      "api": {
+        "gradetrackingapp": {}
       }
     }
   }

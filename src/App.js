@@ -1,9 +1,10 @@
 import { Amplify } from 'aws-amplify';
+import { listClasses } from './graphql/queries';
+import {generateClient} from 'aws-amplify/api';
 import config from './amplifyconfiguration.json';
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
-import { API } from "aws-amplify";
 import { signOut } from 'aws-amplify/auth';
 import profileImg from "./profile.jpg";
 import logoutImg from "./logout.jpg";
@@ -17,7 +18,21 @@ import {
   withAuthenticator,
 } from "@aws-amplify/ui-react";
 
+
 Amplify.configure(config);
+const API = generateClient();
+const [classes, setClasses] = useState([]);
+
+const fetchClasses = async () => {
+  try{
+    const classData = await API.graphql(({ query: listClasses }));
+    const classList = classData.data.listClasses.items;
+    console.log('class list', classList);
+    setClasses(classList);
+  }catch (error) {
+    console.log('error on fetching songs', error);
+  }
+}
 
 async function handleSignOut() {
   try {
