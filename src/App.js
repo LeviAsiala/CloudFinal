@@ -162,9 +162,4 @@ function App({signOut,user}) {
   );
 }
 
-/**function toggleDropdown() {
-  var dropdownContent = document.getElementById('dropdownContent');
-  dropdownContent.classList.toggle('show');
-}**/
-
 export default withAuthenticator(App);

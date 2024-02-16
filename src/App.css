@@ -160,15 +160,15 @@
 }
 
 button {
-  background-color: transparent;
+  background-color: #fff;
   border: none;
   cursor: pointer;
 }
 
 /* Style for the image */
 button img {
-  width: 50px;
-  border-radius: 100%;
+  width: 100px;
+  height: auto;
   border: 1px solid #eee;
 }
 
