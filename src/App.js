@@ -5,6 +5,7 @@ import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
 import { API } from "aws-amplify";
 import { signOut } from 'aws-amplify/auth';
+import profileImg from "./profile.jpg";
 import {
   Button,
   Flex,
@@ -97,7 +98,7 @@ function App({signOut,user}) {
       <i className="bx bx-menu" id="btn" />
     </div>
     <div className="user">
-      <img src="profile.jpg" alt="me" className="user-img" />
+      <img src={profileImg} alt="me" className="user-img" />
       <div>
         <p className="bold">Elizabeth M.</p>
         <p>Admin</p>
@@ -147,7 +148,7 @@ function App({signOut,user}) {
         <span className="tooltip">Settings</span>
       </li>
       <li>
-        <button><img src="profile.jpg" alt="my image" onClick={handleSignOut} /></button>
+        <button><img src={profileImg} alt="my image" onClick={handleSignOut} /></button>
       </li>
     </ul>
   </div>
