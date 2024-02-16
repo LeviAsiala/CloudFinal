@@ -105,42 +105,42 @@ function App({signOut,user}) {
     </div>
     <ul>
       <li>
-        <a href="#" onclick={() => changeContent('Home')}>
+        <a href="#" onClick={() => changeContent('Home')}>
           <i className="bx bxs-home" />
           <span className="nav-item">Home</span>
         </a>
         <span className="tooltip">Home</span>
       </li>
       <li>
-        <a href="#" onclick={() => changeContent('Grades')}>
+        <a href="#" onClick={() => changeContent('Grades')}>
           <i className="bx bx-bar-chart" />
           <span className="nav-item">Grades</span>
         </a>
         <span className="tooltip">Grades</span>
       </li>
       <li>
-        <a href="#" onclick={() => changeContent('Tutoring')}>
+        <a href="#" onClick={() => changeContent('Tutoring')}>
           <i className="bx bxs-pencil" />
           <span className="nav-item">Tutoring</span>
         </a>
         <span className="tooltip">Tutoring</span>
       </li>
       <li>
-        <a href="#" onclick={() => changeContent('Majors')}>
+        <a href="#" onClick={() => changeContent('Majors')}>
           <i className="bx bxs-graduation" />
           <span className="nav-item">Majors</span>
         </a>
         <span className="tooltip">Majors</span>
       </li>
       <li>
-        <a href="#" onclick={() => changeContent('Careers')}>
+        <a href="#" onClick={() => changeContent('Careers')}>
           <i className="bx bxs-briefcase-alt-2" />
           <span className="nav-item">Careers</span>
         </a>
         <span className="tooltip">Careers</span>
       </li>
       <li>
-        <a href="#" onclick={() => changeContent('Settings')}>
+        <a href="#" onClick={() => changeContent('Settings')}>
           <i className="bx bxs-cog" />
           <span className="nav-item">Settings</span>
         </a>
