@@ -21,19 +21,19 @@ import {
 
 
 Amplify.configure(config);
-const API = generateClient();
-const [classes, setClasses] = useState([]);
+// const API = generateClient();
+// const [classes, setClasses] = useState([]);
 
-const fetchClasses = async () => {
-  try{
-    const classData = await API.graphql(({ query: listClasses }));
-    const classList = classData.data.listClasses.items;
-    console.log('class list', classList);
-    setClasses(classList);
-  }catch (error) {
-    console.log('error on fetching songs', error);
-  }
-}
+// const fetchClasses = async () => {
+//   try{
+//     const classData = await API.graphql(({ query: listClasses }));
+//     const classList = classData.data.listClasses.items;
+//     console.log('class list', classList);
+//     setClasses(classList);
+//   }catch (error) {
+//     console.log('error on fetching songs', error);
+//   }
+// }
 
 async function handleSignOut() {
   try {
