@@ -8,7 +8,7 @@ import "@aws-amplify/ui-react/styles.css";
 import { signOut } from 'aws-amplify/auth';
 import profileImg from "./profile.jpg";
 import logoutImg from "./logout.jpg";
-import { Auth } from 'aws-amplify'; // Import Auth from aws-amplify
+import { getCurrentUser } from 'aws-amplify/auth';
 import {
   Button,
   Flex,
@@ -21,34 +21,13 @@ import {
 
 
 Amplify.configure(config);
-// const API = generateClient();
-// const [classes, setClasses] = useState([]);
-
-// const fetchClasses = async () => {
-//   try{
-//     const classData = await API.graphql(({ query: listClasses }));
-//     const classList = classData.data.listClasses.items;
-//     console.log('class list', classList);
-//     setClasses(classList);
-//   }catch (error) {
-//     console.log('error on fetching songs', error);
-//   }
-// }
+const API = generateClient();
 
 async function handleSignOut() {
   try {
     await signOut();
   } catch (error) {
     console.log('error signing out: ', error);
-  }
-}
-
-async function fetchUserData() {
-  try {
-    const userInfo = await Auth.currentAuthenticatedUser(); // Get authenticated user info
-    setUserData(userInfo); // Update state with user data
-  } catch (error) {
-    console.error('Error fetching user data:', error);
   }
 }
 
@@ -91,6 +70,27 @@ async function fetchContentForPage(pageName){
 
 function App({signOut,user}) {
   const [userData, setUserData] = useState(null); // State to store user data
+  const [classes, setClasses] = useState([]);
+
+  const fetchClasses = async () => {
+    try{
+      const classData = await API.graphql(({ query: listClasses }));
+      const classList = classData.data.listClasses.items;
+      console.log('class list', classList);
+      setClasses(classList);
+    }catch (error) {
+      console.log('error on fetching songs', error);
+    }
+  }
+
+  async function fetchUserData() {
+    try {
+      const userInfo = await getCurrentUser(); // Get authenticated user info
+      setUserData(userInfo); // Update state with user data 
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }
 
   useEffect(() => {
     fetchUserData(); // Fetch user data when component mounts
