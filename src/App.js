@@ -69,7 +69,7 @@ async function fetchContentForPage(pageName){
 }
 
 function App({signOut, user}) {
-  const [user, setUserData] = useState(null); // State to store user data
+  const [userData, setUserData] = useState(null); // State to store user data
   const [classes, setClasses] = useState([]);
 
   const fetchClasses = async () => {
@@ -132,7 +132,7 @@ function App({signOut, user}) {
     <div className="user">
       <img src={profileImg} alt="me" className="user-img" />
       <div>
-        <p className="bold">{user.username}</p>
+        <p className="bold">{userData.username}</p>
         <p>Does it work</p>
       </div>
     </div>
