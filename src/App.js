@@ -69,33 +69,6 @@ async function fetchContentForPage(pageName){
 }
 
 function App({signOut, user}) {
-  // const [userData, setUserData] = useState([]); // State to store user data
-  // const [classes, setClasses] = useState([]);
-
-  // const fetchClasses = async () => {
-  //   try{
-  //     const classData = await API.graphql(({ query: listClasses }));
-  //     const classList = classData.data.listClasses.items;
-  //     console.log('class list', classList);
-  //     setClasses(classList);
-  //   }catch (error) {
-  //     console.log('error on fetching songs', error);
-  //   }
-  // }
-
-  // async function fetchUserData() {
-  //   try {
-  //     const userInfo = await getCurrentUser(); // Get authenticated user info
-  //     setUserData(userInfo); // Update state with user data 
-  //   } catch (error) {
-  //     console.error('Error fetching user data:', error);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   fetchUserData(); // Fetch user data when component mounts
-  // }, []);
-
   useEffect(() => {
     // JavaScript code to toggle sidebar and set initial content
     let btn = document.querySelector('#btn');
@@ -132,7 +105,7 @@ function App({signOut, user}) {
     <div className="user">
       <img src={profileImg} alt="me" className="user-img" />
       <div>
-        <p className="bold">{user.username}</p>
+        <p className="bold">{user.fullName}</p>
         <p>Does it work</p>
       </div>
     </div>
