@@ -82,9 +82,6 @@ function App({signOut, user}) {
         changeContent('Home');
     });
   }, []);
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
   <>
