@@ -116,7 +116,7 @@ function App({signOut, user}) {
       <img src={profileImg} alt="me" className="user-img" />
       <div>
         <p className="bold">{user.username}</p>
-        <p>Does it work</p>
+        <p1>Does it work</p1>
       </div>
     </div>
     <ul>
