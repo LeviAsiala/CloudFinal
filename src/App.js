@@ -69,19 +69,18 @@ async function fetchContentForPage(pageName){
 }
 
 function App({signOut, user}) {
-  const [userData] = useState(null);
-
-  async function fetchUserData() {
-    try {
-      const userInfo = await getCurrentUser(); // Get authenticated user info
- 
-      console.log(userInfo); 
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-    }
-  }
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const userInfo = await getCurrentUser(); // Get authenticated user info
+        setUserData(userInfo);
+        console.log(userInfo); 
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
     // JavaScript code to toggle sidebar and set initial content
     let btn = document.querySelector('#btn');
     let sidebar = document.querySelector('.sidebar');
@@ -93,11 +92,12 @@ function App({signOut, user}) {
     document.addEventListener('DOMContentLoaded', function () {
         changeContent('Home');
     });
+
     fetchUserData();
   }, []);
 
-  const firstName = user.attributes['name'];
-  const lastName = user.attributes['family_name'];
+  const firstName = userData ? userData.attributes['name']: '';
+  const lastName = userData ? userData.attributes['family_name']: '';
 
   return (
   <>
