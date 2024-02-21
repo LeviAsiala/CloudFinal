@@ -118,8 +118,8 @@ function App({signOut, user}) {
     <div className="user">
       <img src={profileImg} alt="me" className="user-img" />
       <div>
-        <p className="bold">{userData.attributes.name}</p>
-        <p1>Does it work</p1>
+        <p className="bold">{userInfo.name}</p>
+        <p1>Possibly</p1>
       </div>
     </div>
     <ul>
