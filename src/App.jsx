@@ -9,6 +9,7 @@ import { signOut } from 'aws-amplify/auth';
 import profileImg from "./profile.jpg";
 import logoutImg from "./logout.jpg";
 import { getCurrentUser } from 'aws-amplify/auth';
+import { fetchUserAttributes } from 'aws-amplify/auth';
 import {
   Button,
   Flex,
@@ -22,7 +23,6 @@ import {
 
 Amplify.configure(config);
 const API = generateClient();
-
 async function handleSignOut() {
   try {
     await signOut();
@@ -69,7 +69,7 @@ async function fetchContentForPage(pageName){
 }
 
 function App({signOut, user}) {
-  const [userData, setUserData] = useState(null);
+  const [full_name, setFullName] = useState("");
 
   useEffect(() => {
     async function fetchUserData() {
@@ -92,12 +92,18 @@ function App({signOut, user}) {
     document.addEventListener('DOMContentLoaded', function () {
         changeContent('Home');
     });
-
+   
     fetchUserData();
   }, []);
 
-  const firstName = userData ? userData.attributes['name']: '';
-  const lastName = userData ? userData.attributes['family_name']: '';
+  async function fetchUserData() {
+    try {
+      const userInfo = await fetchUserAttributes(getCurrentUser()); // Get authenticated user info
+      setFullName(userInfo.name + " " + userInfo.family_name);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }
 
   return (
   <>
@@ -121,14 +127,12 @@ function App({signOut, user}) {
     <div className="user">
       <img src={profileImg} alt="me" className="user-img" />
       <div>
-        <p className="bold">{firstName}{lastName}</p>
-        <p>Test</p>
+        <p className="bold">{full_name}</p>
       </div>
     </div>
     <ul>
       <li>
-        <a href="#" onClick={fetchUserData}> 
-        {/* () => changeContent('Home')}> */}
+        <a href="#" onClick={() => changeContent('Home')}>
           <i className="bx bxs-home" />
           <span className="nav-item">Home</span>
         </a>
