@@ -69,9 +69,17 @@ async function fetchContentForPage(pageName){
 }
 
 function App({signOut, user}) {
-  const firstName = user.attributes['name'];
-  const lastName = user.attributes['family_name'];
-  const [userData, setUserData] = useState(null);
+  const [userData] = useState(null);
+
+  async function fetchUserData() {
+    try {
+      const userInfo = await getCurrentUser(); // Get authenticated user info
+ 
+      console.log(userInfo); 
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }
 
   useEffect(() => {
     // JavaScript code to toggle sidebar and set initial content
@@ -88,15 +96,8 @@ function App({signOut, user}) {
     fetchUserData();
   }, []);
 
-   async function fetchUserData() {
-     try {
-       const userInfo = await getCurrentUser(); // Get authenticated user info
-  
-       console.log(userInfo); 
-     } catch (error) {
-       console.error('Error fetching user data:', error);
-     }
-   }
+  const firstName = user.attributes['name'];
+  const lastName = user.attributes['family_name'];
 
   return (
   <>
