@@ -83,6 +83,16 @@ function App({signOut, user}) {
     });
   }, []);
 
+  async function fetchUserData() {
+    try {
+      const userInfo = await getCurrentUser(); // Get authenticated user info
+      //setUserData(userInfo); // Update state with user data
+      console.log(userInfo); 
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }
+
   return (
   <>
   <meta charSet="UTF-8" />
@@ -111,7 +121,8 @@ function App({signOut, user}) {
     </div>
     <ul>
       <li>
-        <a href="#" onClick={() => changeContent('Home')}>
+        <a href="#" onClick={fetchUserData}> 
+        {/* () => changeContent('Home')}> */}
           <i className="bx bxs-home" />
           <span className="nav-item">Home</span>
         </a>
