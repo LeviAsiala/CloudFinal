@@ -69,6 +69,8 @@ async function fetchContentForPage(pageName){
 }
 
 function App({signOut, user}) {
+  const [userData, setUserData] = useState(null);
+
   useEffect(() => {
     // JavaScript code to toggle sidebar and set initial content
     let btn = document.querySelector('#btn');
@@ -81,12 +83,13 @@ function App({signOut, user}) {
     document.addEventListener('DOMContentLoaded', function () {
         changeContent('Home');
     });
+    fetchUserData();
   }, []);
 
   async function fetchUserData() {
     try {
       const userInfo = await getCurrentUser(); // Get authenticated user info
-      //setUserData(userInfo); // Update state with user data
+      setUserData(userInfo); // Update state with user data
       console.log(userInfo); 
     } catch (error) {
       console.error('Error fetching user data:', error);
@@ -115,7 +118,7 @@ function App({signOut, user}) {
     <div className="user">
       <img src={profileImg} alt="me" className="user-img" />
       <div>
-        <p className="bold">{user.username}</p>
+        <p className="bold">{userData.attributes.name}</p>
         <p1>Does it work</p1>
       </div>
     </div>
