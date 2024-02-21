@@ -75,7 +75,6 @@ function App({signOut, user}) {
     async function fetchUserData() {
       try {
         const userInfo = await getCurrentUser(); // Get authenticated user info
-        setUserData(userInfo);
         console.log(userInfo); 
       } catch (error) {
         console.error('Error fetching user data:', error);
