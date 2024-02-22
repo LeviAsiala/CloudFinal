@@ -72,14 +72,6 @@ function App({signOut, user}) {
   const [full_name, setFullName] = useState("");
 
   useEffect(() => {
-    async function fetchUserData() {
-      try {
-        const userInfo = await getCurrentUser(); // Get authenticated user info
-        console.log(userInfo); 
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    }
     // JavaScript code to toggle sidebar and set initial content
     let btn = document.querySelector('#btn');
     let sidebar = document.querySelector('.sidebar');
