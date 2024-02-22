@@ -167,7 +167,8 @@ button {
 /* Style for the image */
 button img {
   width: 50px;
-  border: 1px solid #eee;
+  border: none;
+  border-radius: 100%;
 }
 
 .sidebar .nav-item {
