@@ -31,14 +31,14 @@ async function handleSignOut() {
   }
 }
 
-async function changeContent(pageName){
-  try {
-    var content = await fetchContentForPage(pageName);
-    document.getElementById('contentContainer').innerHTML = content;
-  } catch (error) {
-    console.error('Error changing content: ', error);
-  }
-}
+// async function changeContent(pageName){
+//   try {
+//     var content = await fetchContentForPage(pageName);
+//     document.getElementById('contentContainer').innerHTML = content;
+//   } catch (error) {
+//     console.error('Error changing content: ', error);
+//   }
+// }
 
 async function displayHome(){
   return(
@@ -83,6 +83,7 @@ async function fetchContentForPage(pageName){
 
 function App({signOut, user}) {
   const [full_name, setFullName] = useState("");
+  const[content, setContent] = useState("");
 
   useEffect(() => {
     // JavaScript code to toggle sidebar and set initial content
@@ -106,6 +107,15 @@ function App({signOut, user}) {
       setFullName(userInfo.name + " " + userInfo.family_name);
     } catch (error) {
       console.error('Error fetching user data:', error);
+    }
+  }
+
+  async function changeContent(pageName){
+    try {
+      var content = await fetchContentForPage(pageName);
+      //document.getElementById('contentContainer').innerHTML = content;
+    } catch (error) {
+      console.error('Error changing content: ', error);
     }
   }
 
