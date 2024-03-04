@@ -59,7 +59,7 @@ async function fetchContentForPage(pageName){
     switch(pageName){
       case 'Home':
           //return '<h1>Home</h1>';
-          return displayHome();
+          return await displayHome();
       case 'Grades':
           return '<h1>Grades</h1>';
       case 'Tutoring':
@@ -75,7 +75,7 @@ async function fetchContentForPage(pageName){
       case 'Logout':
           return '<h1>Logout</h1>';
       default:
-          return displayHome();
+          return await displayHome();
     }
   } catch (error) {
     console.error('Error fetching content for page: ', error);
